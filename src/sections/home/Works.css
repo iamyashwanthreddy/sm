@@ -1,0 +1,98 @@
+.works {
+  position: relative;
+  background: var(--bg);
+  padding-bottom: var(--section);
+}
+
+/* The doc's opening beat: a giant WORKS that holds while the work rises over it */
+.works__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+.works__word {
+  display: flex;
+  font-size: clamp(5rem, 24vw, 26rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  color: var(--text);
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.works__word span {
+  display: block;
+}
+
+.works__inner {
+  position: relative;
+  z-index: 2;
+  margin-top: -20svh;
+}
+
+.works__intro {
+  display: grid;
+  gap: 18px;
+  max-width: 780px;
+  margin-bottom: clamp(72px, 9vw, 140px);
+}
+.works__heading {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+}
+.works__heading h2 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+.works__heading em {
+  font-style: normal;
+  color: var(--yellow);
+}
+.works__constellation {
+  flex: none;
+  width: clamp(150px, 16vw, 220px);
+  margin-bottom: 0.35em;
+}
+
+.works__close {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px 40px;
+  margin-top: clamp(88px, 11vw, 160px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.works__close p {
+  max-width: 36ch;
+  color: var(--text-2);
+}
+
+@media (max-width: 767px) {
+  .works__inner {
+    margin-top: -14svh;
+  }
+  .works__constellation {
+    display: none;
+  }
+}
+
+/* Without motion there is no dimming, so WORKS becomes a plain heading instead of a backdrop */
+@media (prefers-reduced-motion: reduce) {
+  .works__sticky {
+    position: relative;
+    height: auto;
+    padding-top: var(--section);
+  }
+  .works__inner {
+    margin-top: clamp(32px, 5vw, 64px);
+  }
+}

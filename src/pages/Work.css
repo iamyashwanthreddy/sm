@@ -1,0 +1,31 @@
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(56px, 7vw, 96px);
+}
+.work-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.work-filter:hover {
+  border-color: var(--yellow);
+  color: var(--text);
+}
+.work-filter[aria-pressed='true'] {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--ink);
+}
+.work-filter__count {
+  font-size: 0.72rem;
+  opacity: 0.7;
+}

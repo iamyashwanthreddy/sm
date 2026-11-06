@@ -1,0 +1,40 @@
+.not-found {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  padding: calc(var(--header-h) + 48px) 0 64px;
+  text-align: center;
+  overflow: hidden;
+}
+.not-found__inner {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+.not-found__zeus {
+  width: clamp(150px, 18vw, 230px);
+  animation: zeus-float 6s ease-in-out infinite;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
+}
+.not-found h1 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  max-width: 16ch;
+}
+.not-found h1 em {
+  font-style: normal;
+  color: var(--yellow);
+}
+.not-found .lead {
+  text-align: center;
+}
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}

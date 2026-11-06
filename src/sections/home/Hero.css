@@ -1,0 +1,326 @@
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + 48px);
+  overflow: hidden;
+  background: radial-gradient(120% 70% at 50% 0%, #12141a 0%, var(--bg) 60%);
+}
+
+.hero__top,
+.hero__bottom {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 18px 6px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(17, 19, 24, 0.7);
+  font-size: 0.85rem;
+  color: var(--text-2);
+}
+.hero__pill-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+
+.hero__title {
+  margin-top: clamp(1rem, 2.4vh, 1.8rem);
+  font-size: clamp(3rem, 10.4vw, 10rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+.hero__line {
+  display: block;
+  overflow: hidden;
+  padding: 0.02em 0.06em 0.06em;
+}
+.hero__line > span {
+  display: inline-block;
+  position: relative;
+}
+.hero__title em {
+  font-style: normal;
+  color: var(--yellow);
+}
+
+.hero__chip {
+  position: absolute;
+  left: 100%;
+  top: 8%;
+  margin-left: 0.18em;
+  padding: 0.5rem 1.1rem;
+  border-radius: 10px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: clamp(0.8rem, 1.2vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.2;
+  white-space: nowrap;
+  transform: rotate(8deg);
+  box-shadow: 0 16px 40px rgba(248, 197, 50, 0.18);
+  overflow: hidden;
+}
+.hero__chip-text {
+  display: block;
+  animation: chip-in 0.5s var(--ease);
+}
+@keyframes chip-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* Window (static layout first: reduced motion / no JS) */
+.hero__window {
+  position: relative;
+  z-index: 1;
+  height: 62vh;
+  min-height: 380px;
+  margin: 40px var(--gutter);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #020305;
+}
+.hero__earth {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 70%;
+  will-change: transform;
+}
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 9, 11, 0.85) 0%, rgba(8, 9, 11, 0.1) 45%, rgba(8, 9, 11, 0.75) 100%),
+    radial-gradient(60% 60% at 50% 50%, transparent 40%, rgba(8, 9, 11, 0.6) 100%);
+}
+.hero__orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+.hero__orbit path {
+  vector-effect: non-scaling-stroke;
+}
+.hero__orbit path:first-child {
+  stroke: rgba(245, 245, 242, 0.5);
+}
+.hero__zeus {
+  --zw: clamp(220px, 32vw, 460px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: var(--zw);
+  margin: calc(var(--zw) * -0.52) auto 0;
+  will-change: transform;
+}
+.hero__zeus img {
+  filter: drop-shadow(0 40px 60px rgba(0, 0, 0, 0.55));
+}
+.hero__hud {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px 32px;
+  padding-bottom: clamp(24px, 5vh, 48px);
+}
+.hero__hud .label:first-child {
+  grid-column: 1 / -1;
+  color: var(--yellow);
+}
+.hero__hud-title {
+  max-width: 18ch;
+  font-size: clamp(1.4rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.hero__coords {
+  text-align: right;
+}
+
+.hero__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 48px;
+}
+.hero__desc {
+  max-width: 44ch;
+  font-size: var(--fs-lead);
+  color: var(--text-2);
+}
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.hero__scroll {
+  display: none;
+}
+
+/* Cinematic (motion allowed): fixed viewport with the window absolutely behind */
+.hero--cinematic {
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero--cinematic .hero__window {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+}
+.hero--cinematic .hero__bottom {
+  padding-bottom: clamp(20px, 4vh, 40px);
+  gap: 18px;
+}
+.hero--cinematic .hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero--cinematic .hero__scroll::before {
+  content: '';
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(var(--yellow), transparent);
+  animation: scroll-cue 1.8s var(--ease) infinite;
+  transform-origin: top;
+}
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__chip {
+    left: auto;
+    right: -0.2em;
+    top: -1.9em;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.8rem;
+  }
+  .hero__hud {
+    grid-template-columns: 1fr;
+  }
+  .hero__coords {
+    text-align: left;
+  }
+  .hero__zeus {
+    --zw: min(70vw, 300px);
+  }
+  .hero__ctas .btn {
+    flex: 1 1 auto;
+    justify-content: space-between;
+  }
+}
+@media (max-height: 760px) and (min-width: 768px) {
+  .hero__title {
+    font-size: clamp(3rem, 8.4vw, 8rem);
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero__line--b > span {
+    margin-top: 0.3em;
+  }
+}
+@media (max-width: 480px) {
+  .hero__chip {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .hero {
+    padding-top: calc(var(--header-h) + 20px);
+  }
+  .hero__pill-long {
+    display: none;
+  }
+  .hero__desc {
+    font-size: 0.98rem;
+  }
+  .hero__ctas {
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 8px;
+  }
+  .hero__ctas .btn {
+    flex: 1 1 0;
+    min-height: 48px;
+    padding-left: 1rem;
+    font-size: 0.88rem;
+  }
+  .hero__ctas .btn--ghost {
+    justify-content: center;
+    padding-right: 1rem;
+  }
+  .hero__ctas .btn__icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-height: 760px) {
+  .hero--cinematic .hero__scroll {
+    display: none;
+  }
+}
+
+/* Two sparse constellations flanking the headline (wide screens only) */
+.hero__stars {
+  position: absolute;
+  width: clamp(150px, 13vw, 210px);
+  display: none;
+}
+@media (min-width: 1100px) {
+  .hero__stars {
+    display: block;
+  }
+}
+.hero__stars--l {
+  left: var(--gutter);
+  bottom: 4%;
+}
+.hero__stars--r {
+  right: var(--gutter);
+  bottom: -18%;
+}

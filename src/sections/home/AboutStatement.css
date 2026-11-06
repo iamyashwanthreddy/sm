@@ -1,0 +1,121 @@
+/* A light editorial interlude between the hero and the comic */
+.statement-section {
+  position: relative;
+  padding-block: var(--section);
+  background: #ecebe6;
+  color: var(--ink);
+  overflow: hidden;
+}
+.statement__eyebrow {
+  text-align: center;
+  color: #5f5f5a;
+  letter-spacing: 0.32em;
+}
+.statement {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+  font-size: clamp(2.2rem, 6.4vw, 6.4rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+.statement__row {
+  display: inline-block;
+}
+@media (min-width: 900px) {
+  .statement__row {
+    display: block;
+  }
+}
+
+.hover-word {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  white-space: nowrap;
+}
+.hover-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.08em;
+  bottom: 0.02em;
+  height: 0.07em;
+  background: currentColor;
+  transform-origin: left;
+  transition: transform 0.5s var(--ease), background-color 0.3s;
+}
+.hover-word:hover::after {
+  background: var(--yellow);
+}
+
+.statement__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.stack-img {
+  --w: clamp(140px, 17vw, 250px);
+  position: absolute;
+  width: var(--w);
+  margin: calc(var(--w) * -0.625) 0 0 calc(var(--w) * -0.5);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+  background: #fff;
+}
+.stack-img--zeus {
+  object-fit: contain;
+  background: var(--ink);
+  padding: 18px;
+}
+
+.statement__foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: end;
+  gap: 24px 48px;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 28px;
+  border-top: 1px solid rgba(11, 12, 14, 0.15);
+}
+.statement__foot p:first-child {
+  max-width: 52ch;
+  color: #3b3b38;
+}
+.statement__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b6b66;
+}
+.statement__hint-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+  border: 1px solid var(--ink);
+}
+.statement__foot .link-arrow {
+  border-color: rgba(11, 12, 14, 0.3);
+}
+.statement__foot .link-arrow:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .statement__foot {
+    grid-template-columns: 1fr;
+  }
+}
+@media (hover: none) {
+  .statement__hint {
+    display: none;
+  }
+}

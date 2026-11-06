@@ -1,0 +1,102 @@
+/* ==========================================================
+   SVG motion language: thin routes, sparse points, one accent.
+   Default state is the finished drawing, so reduced motion and
+   no-JS visitors see a complete, still composition.
+   ========================================================== */
+.mo {
+  --mo-line: rgba(245, 245, 242, 0.24);
+  --mo-faint: rgba(245, 245, 242, 0.12);
+  --mo-point: rgba(245, 245, 242, 0.75);
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+}
+.mo path,
+.mo line,
+.mo circle {
+  vector-effect: non-scaling-stroke;
+}
+
+/* Constellation */
+.mo-link {
+  stroke: var(--mo-line);
+  stroke-width: 1;
+}
+.mo-node circle {
+  fill: var(--mo-point);
+}
+.mo-node--star .mo-spark {
+  fill: var(--mo-point);
+}
+.mo-spark.is-accent,
+.mo-node--accent .mo-spark {
+  fill: var(--yellow);
+}
+
+/* Orbit */
+.mo-orbit__track {
+  stroke: var(--mo-faint);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+.mo-orbit__path {
+  stroke: var(--mo-line);
+  stroke-width: 1.2;
+}
+.mo-orbit__planet {
+  fill: var(--bg-2);
+  stroke: rgba(245, 245, 242, 0.3);
+  stroke-width: 1;
+}
+.mo-orbit__marker {
+  fill: var(--yellow);
+  opacity: 0;
+}
+.mo-orbit__ping {
+  stroke: var(--yellow);
+  stroke-width: 1;
+  opacity: 0;
+}
+
+/* Section route */
+.mo-route {
+  width: 42px;
+  height: 134px;
+}
+.mo-route__guide {
+  stroke: var(--mo-faint);
+  stroke-width: 1;
+  stroke-dasharray: 1 5;
+  stroke-linecap: round;
+}
+.mo-route__path {
+  stroke: var(--mo-line);
+  stroke-width: 1.2;
+}
+.mo-route__marker {
+  fill: var(--yellow);
+  opacity: 0;
+}
+.mo-route__end {
+  stroke: var(--yellow);
+  stroke-width: 1.2;
+  fill: var(--bg);
+}
+
+/* A quiet hand-off between two homepage chapters */
+.section-joint {
+  display: grid;
+  place-items: center;
+  padding-top: clamp(24px, 4vw, 48px);
+  background: linear-gradient(var(--bg), var(--bg-2));
+}
+
+@media (max-width: 767px) {
+  .section-joint {
+    display: none;
+  }
+  .mo--desktop {
+    display: none;
+  }
+}

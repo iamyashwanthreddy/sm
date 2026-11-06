@@ -1,0 +1,247 @@
+.footer {
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* Launch block */
+.footer__launch {
+  position: relative;
+  min-height: min(100svh, 860px);
+  display: flex;
+  align-items: center;
+  padding-block: var(--section) clamp(10rem, 22vw, 18rem);
+  border-top: 1px solid var(--line);
+  isolation: isolate;
+}
+.footer__space {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.footer__earth {
+  position: absolute;
+  left: 50%;
+  bottom: -46%;
+  width: max(1500px, 130vw);
+  max-width: none;
+  transform: translateX(-50%);
+  opacity: 0.75;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+}
+.footer__orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+.footer__orbit-path {
+  stroke: rgba(245, 245, 242, 0.22);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.footer__launch-inner {
+  position: relative;
+}
+.footer__statement {
+  margin-top: 1.4rem;
+  font-size: var(--fs-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.footer__statement .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.footer__statement .line > span {
+  display: block;
+}
+.footer__statement em {
+  font-style: italic;
+  color: var(--yellow);
+}
+.footer__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 32px;
+  margin-top: 2.6rem;
+}
+.footer__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 500;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 4px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.footer__email:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+.footer__zeus {
+  position: absolute;
+  right: var(--gutter);
+  bottom: -9rem;
+  width: clamp(140px, 17vw, 250px);
+}
+.footer__zeus img {
+  animation: zeus-float 7s ease-in-out infinite;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6));
+}
+@keyframes zeus-float {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -3deg;
+  }
+  50% {
+    translate: 0 -14px;
+    rotate: 2deg;
+  }
+}
+
+/* Link grid */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 40px 32px;
+  padding-block: 72px 56px;
+  border-top: 1px solid var(--line);
+}
+.footer__brand img {
+  width: 160px;
+}
+.footer__brand p {
+  margin-top: 18px;
+  color: var(--text-2);
+  font-size: var(--fs-small);
+  max-width: 28ch;
+}
+.footer__partner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 6px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: border-color 0.3s;
+}
+.footer__partner:hover {
+  border-color: var(--yellow);
+}
+.footer__partner-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: conic-gradient(#4285f4 0 25%, #ea4335 0 50%, #fbbc05 0 75%, #34a853 0);
+}
+.footer__col h3 {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.footer__col ul {
+  display: grid;
+  gap: 10px;
+  font-size: var(--fs-small);
+}
+.footer__col a {
+  color: var(--text-2);
+  transition: color 0.3s;
+  overflow-wrap: anywhere;
+}
+.footer__col a:hover {
+  color: var(--yellow);
+}
+.footer__sub {
+  margin-top: 28px;
+}
+.footer__offices li {
+  display: grid;
+  gap: 2px;
+}
+.footer__offices strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.footer__offices span {
+  color: var(--text-3);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 24px 32px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+.footer__socials {
+  display: flex;
+  gap: 22px;
+}
+.footer__socials a,
+.footer__top {
+  color: var(--text-2);
+  transition: color 0.3s;
+}
+.footer__socials a:hover,
+.footer__top:hover {
+  color: var(--yellow);
+}
+.footer__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1100px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 20px;
+  }
+  .footer__offices {
+    grid-column: 1 / -1;
+  }
+  .footer__zeus {
+    bottom: -7.5rem;
+  }
+}
+
+/* Small planet whose orbit closes as the CTA arrives */
+.footer__planet {
+  position: absolute;
+  top: -12px;
+  right: calc(var(--gutter) + 2%);
+  width: clamp(170px, 17vw, 250px);
+}
+@media (max-width: 899px) {
+  .footer__planet {
+    display: none;
+  }
+}

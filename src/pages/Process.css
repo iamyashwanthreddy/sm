@@ -1,0 +1,199 @@
+.missions__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.missions__head h2 {
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.missions {
+  border-top: 1px solid var(--line);
+}
+.mission-row {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+  overflow: hidden;
+}
+/* Yellow highlight sweeps in on hover */
+.mission-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--yellow);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.55s var(--ease);
+}
+.mission-row__inner {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) clamp(140px, 22vw, 300px);
+  gap: 24px;
+  align-items: center;
+  padding-block: clamp(28px, 4vw, 44px);
+  transition: color 0.4s var(--ease);
+}
+.mission-row__num {
+  align-self: start;
+  padding-top: 0.6em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--yellow);
+  transition: color 0.4s;
+}
+.mission-row h3 {
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  color: var(--text-2);
+  transition: color 0.4s;
+}
+.mission-row__quote {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+}
+.mission-row__body {
+  margin-top: 6px;
+  max-width: 60ch;
+  color: var(--text-2);
+  transition: color 0.4s;
+}
+.mission-row__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.mission-row__list li {
+  padding: 4px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  transition: border-color 0.4s;
+}
+.mission-row__zeus {
+  justify-self: center;
+  max-height: 210px;
+  width: auto;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.4));
+  opacity: 0;
+  transform: translate(40px, 30px) rotate(8deg) scale(0.9);
+  transition: opacity 0.4s var(--ease), transform 0.6s var(--ease);
+}
+
+@media (hover: hover) {
+  .mission-row:hover::before {
+    transform: none;
+  }
+  .mission-row:hover .mission-row__inner,
+  .mission-row:hover h3,
+  .mission-row:hover .mission-row__num,
+  .mission-row:hover .mission-row__body {
+    color: var(--ink);
+  }
+  .mission-row:hover .mission-row__list li {
+    border-color: rgba(11, 12, 14, 0.35);
+  }
+  .mission-row:hover .mission-row__zeus {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (hover: none) {
+  .mission-row__zeus {
+    opacity: 1;
+    transform: none;
+  }
+  .mission-row h3 {
+    color: var(--text);
+  }
+}
+@media (max-width: 700px) {
+  .mission-row__inner {
+    grid-template-columns: 1fr 110px;
+  }
+  .mission-row__num {
+    grid-column: 1 / -1;
+    padding: 0;
+  }
+  .mission-row__main {
+    grid-column: 1 / -1;
+  }
+  .mission-row__zeus {
+    grid-row: 1;
+    grid-column: 2;
+    max-height: 110px;
+  }
+}
+
+.loop {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+}
+.loop__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+.loop__svg {
+  width: min(100%, 380px);
+  justify-self: center;
+  overflow: visible;
+}
+.loop__track {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+.loop__ring {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 3;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  stroke-linecap: round;
+}
+.loop__big {
+  fill: var(--text);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.loop__small {
+  fill: var(--yellow);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+.loop h2 {
+  margin: 16px 0 18px;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  max-width: 20ch;
+}
+.loop__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+@media (max-width: 760px) {
+  .loop__inner {
+    grid-template-columns: 1fr;
+  }
+  .loop__svg {
+    width: 220px;
+  }
+}
